@@ -1,7 +1,7 @@
 
 # Mashape Todo (pattern/mashape-todo)
 
-This is my day-long attempt at the traditional todo app.  It uses `mongodb` as a database to store the todo items, and uses `express.js` to serve the API as well as the .
+This is my day-long attempt at the traditional todo app.  It uses `mongodb` as a database to store the todo items, and uses `express.js` to serve the API as well as the single root page of the app.
 
 ### Database
 
@@ -21,9 +21,9 @@ Once the database daemon is running, use the `mongo` tool to dictate which datab
 > db.todos.insert({'title':'Buy Pizza', 'body':'A necessity.', 'done':false})
 ```
 
-### Style
+### Styling
 
-The [Stylus](http://learnboost.github.io/stylus/) CSS framework is used.  To compile `style.styl` and make `style.css`, run the following command from the root of the project:
+The [Stylus](http://learnboost.github.io/stylus/) CSS framework is used.  To compile `style.styl` into `style.css`, run the following command from the root of the project:
 
 ```bash
 stylus -w public/stylesheets/
