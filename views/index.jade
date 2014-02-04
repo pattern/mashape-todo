@@ -1,0 +1,47 @@
+extends layout
+
+block content-top
+  // h4 Add Todos:
+  div(style="width: 400px;")
+    form(name="addtodo", method="post", action="/todos").form-horizontal
+      .form-group
+        label.col-sm-2.control-label Title
+        .col-sm-10
+          input(type="text", placeholder="title", name="title").form-control
+      .form-group
+        label.col-sm-2.control-label Body
+        .col-sm-10
+          textarea(placeholder="body", name="body", rows="3").form-control
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          button(type="submit").btn.btn-default Save Todo
+
+block content-left
+  h4 Active Todos:
+  ul
+    each todo, i in todos
+      li.todo.clearfix
+        .todo_controls
+          form(name="deletetodo", method="post", action="/todos/delete/#{todo._id}")
+            button(type="button", aria-hidden="true").close &times;
+        .todo_body
+          h3= todo.title
+          p= todo.body
+        .todo_checkbox
+          form(name="toggletodo", method="post", action="/todos/toggle-done/#{todo._id}")
+            button(type="submit").btn.btn-default Done!
+
+block content-right
+  h4 Completed Todos:
+  ul
+    each todo, i in completed_todos
+      li.todo.clearfix.completed
+        .todo_controls
+          form(name="deletetodo", method="post", action="/todos/delete/#{todo._id}")
+            button(type="button", aria-hidden="true").close &times;
+        .todo_body
+          h3= todo.title
+          p= todo.body
+        .todo_checkbox
+          form(name="toggletodo", method="post", action="/todos/toggle-done/#{todo._id}")
+            button(type="submit").btn.btn-default Undo!
